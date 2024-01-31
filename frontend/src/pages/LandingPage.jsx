@@ -4,7 +4,7 @@ import landing_image from '../images/slider1.png'
 const LandingPage = () => {
     return (
         // from-lime-800 via-lime-600 to-lime-300
-        <div className='h-screen w-full flex flex-col gap-14 relative bg-gradient-to-t from-cyan-400 to-purple-800'
+        <div className='h-screen w-full flex flex-col gap-14 relative bg-gradient-to-r from-orange-300 from-[-25%] via-slate-600 via-15% to-gray-800 to-80%'
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 0 100%)", }}>
             {/* backgroundImage: `url(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center'  */}
             <div className="header flex justify-center">
