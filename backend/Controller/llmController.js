@@ -3,12 +3,10 @@ const { ChatOpenAI } = require('@langchain/openai')
 const { ChatPromptTemplate } = require('@langchain/core/prompts')
 const { StringOutputParser } = require('@langchain/core/output_parsers')
 
-dotenv.config()
+dotenv.config({path:'../../.env'})
 
-const model = new ChatOpenAI({openAIApiKey: "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"})
+const model = new ChatOpenAI({openAIApiKey: process.env.OPENAI_API_KEY})
 const outputParser = new StringOutputParser()
-
-const template = "What is capital of Nepal?"
 
 const prompt = ChatPromptTemplate.fromMessages([
     ["system", "You are a world class professor of environmental science and carbon footprint."],
@@ -23,4 +21,6 @@ const getAnswer = async () =>
     })
     console.log(answer)
 }
-getAnswer()
+// getAnswer()
+
+module.exports = getAnswer
