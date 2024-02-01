@@ -1,8 +1,15 @@
 import React from 'react'
+import LandingPage from './pages/LandingPage'
+import HomePage from './pages/HomePage'
+import AuthPage from './pages/AuthPage'
 
 function App() {
   return (
-    <div className="w-full bg-blue-500">This is homepage.</div>
+    <>
+    <LandingPage/>
+    <HomePage/>
+    <AuthPage/>
+    </>
 
   )
 }
