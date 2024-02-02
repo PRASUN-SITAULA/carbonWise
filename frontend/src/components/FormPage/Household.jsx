@@ -1,5 +1,6 @@
-import { useState } from 'react'
-
+// import { useState } from 'react'
+import { FaHouseChimney } from "react-icons/fa6";
+import { AiFillThunderbolt } from "react-icons/ai";
 const Household = ({household,setHousehold}) => {
 
     const handleChange = (e) => {
@@ -9,7 +10,7 @@ const Household = ({household,setHousehold}) => {
     return (
         <div>
             <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
-                <h2 className="text-lg font-semibold mb-4">ABOUT YOUR HOUSEHOLD</h2>
+                <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaHouseChimney className="text-xl"/> ABOUT YOUR HOUSEHOLD</h2>
                 <div className="mb-4">
                     <label htmlFor="numberOfPeople" className="block mb-1">Number of people in the household</label>
                     <input type="number" id="numberOfPeople" name="numberOfPeople" value={household.numberOfPeople} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
@@ -24,7 +25,7 @@ const Household = ({household,setHousehold}) => {
                     </select>
                 </div>
 
-                <h2 className="text-lg font-semibold mb-4">ENERGY CONSUMPTION</h2>
+                <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><AiFillThunderbolt className="text-xl"/> ENERGY CONSUMPTION</h2>
                 <div className="mb-4">
                     <label htmlFor="electricityConsumption" className="block mb-1">Electricity consumption (KWh/month)</label>
                     <input type="number" id="electricityConsumption" name="electricityConsumption" value={household.electricityConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
