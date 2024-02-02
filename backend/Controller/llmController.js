@@ -3,7 +3,7 @@ const { ChatOpenAI } = require('@langchain/openai')
 const { ChatPromptTemplate } = require('@langchain/core/prompts')
 const { StringOutputParser } = require('@langchain/core/output_parsers')
 
-dotenv.config({path:'../../.env'})
+dotenv.config({path:'../../config.env'})
 
 const model = new ChatOpenAI({openAIApiKey: process.env.OPENAI_API_KEY})
 const outputParser = new StringOutputParser()
