@@ -62,9 +62,9 @@ const Transport = ({transportData,setTransportData}) => {
                 {transportData.useMotorbike === 'Yes' && (
                     <>
                         <label htmlFor="motorbikeMileage">Annual mileage (km)</label>
-                        <input type="number" id="carMileage" name="motorbikeMileage" value={transportData.motorbikeMileage} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
-                        <label htmlFor="carConsumption">Average consumption (l/100 km)</label>
-                        <input type="number" id="motorbikeConsumption" name="carConsumption" value={transportData.motorbikeConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                        <input type="number" id="motorbikeMileage" name="motorbikeMileage" value={transportData.motorbikeMileage} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
+                        <label htmlFor="motorbikeConsumption">Average consumption (l/100 km)</label>
+                        <input type="number" id="motorbikeConsumption" name="motorbikeConsumption" value={transportData.motorbikeConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
                     </>
                 )}
             </div>
