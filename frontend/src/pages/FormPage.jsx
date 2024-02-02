@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Household from '../components/FormPage/Household';
 import Transport from '../components/FormPage/Transport';
 import Lifestyle from '../components/FormPage/Lifestyle';
@@ -47,8 +48,24 @@ const FormPage = () => {
         }
     });
 
-    const handleSubmit = () =>{
+    const handleSubmit = async (e) =>{
+        const inputData = {household, lifestyleData, transportData};
         console.log(household,lifestyleData,transportData);
+        e.preventDefault();
+
+        try{
+            const response = await axios.post('/get-user-input', inputData);
+
+            if(response.status == 200){
+                console.log("data submitted successfully.");
+            }
+            else{
+                console.error("submission failed", response.statusText); 
+            }
+        }catch(err){
+            console.log("Error", err);
+
+        }
     }
 
     return (
