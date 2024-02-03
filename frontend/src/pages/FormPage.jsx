@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
 import Household from '../components/FormPage/Household';
 import Transport from '../components/FormPage/Transport';
 import Lifestyle from '../components/FormPage/Lifestyle';
 import Navbar from '../components/Navbar/Navbar';
+
+import MoreInfo from '../components/FormPage/MoreInfo';
+
 
 const FormPage = () => {
     const options = ["Household", "Transport", "Lifestyle"];
@@ -64,44 +68,51 @@ const FormPage = () => {
         }catch(err){
             console.log("Error", err);
         }
-    }
+
 
     return (
         <>
-            <div className='bg-gray-50 pb-10'>
-                <div className='bg-black'>
+            <div className='bg-[#f0f5f9] pb-10'>
+                <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
                     <Navbar />
                 </div>
+                <div className='grid grid-cols-1 md:grid-cols-7 px-10'>
+                    <div className='col-span-5'>
+                        <div className='grid md:w-1/2 grid-cols-1 gap-4 w-[20rem] md:grid-cols-3 md:gap-10 mx-auto my-10'>
+                            {options.map((option, index) => (
+                                <button
+                                    key={index}
+                                    className={`text-2xl border-2 rounded-md p-1 text-center border-blue-500 ${selected === option ? "bg-blue-500 text-white " : "hover:bg-gray-200"}`}
+                                    onClick={() => { setSelected(option) }}
+                                >
+                                    {option}
+                                </button>
+                            ))}
+                        </div>
 
-                <div className='grid md:w-1/2 grid-cols-1 gap-4 w-[20rem] md:grid-cols-3 md:gap-10 mx-auto my-10'>
-                    {options.map((option, index) => (
-                        <button
-                            key={index}
-                            className={`text-2xl border-2 rounded-md p-1 text-center border-blue-500 ${selected === option ? "bg-blue-500 text-white " : "hover:bg-gray-200"}`}
-                            onClick={() => { setSelected(option) }}
-                        >
-                            {option}
-                        </button>
-                    ))}
-                </div>
+                        {selected === options[0] && <Household household={household} setHousehold={setHousehold} />}
+                        {selected === options[1] && <Transport transportData={transportData} setTransportData={setTransportData} />}
+                        {selected === options[2] && <Lifestyle lifestyleData={lifestyleData} setLifestyleData={setLifestyleData} />}
 
-                {selected === options[0] && <Household household={household} setHousehold={setHousehold}/>}
-                {selected === options[1] && <Transport transportData={transportData} setTransportData={setTransportData}/>}
-                {selected === options[2] && <Lifestyle lifestyleData={lifestyleData} setLifestyleData={setLifestyleData}/>}
+                        <div className='w-full flex justify-center mt-3 mb-14'>
+                            {options.indexOf(selected) < 2 && <button
+                                className="text-xl w-[28rem] border-2 rounded-md p-1 text-center border-blue-500 text-white bg-green-500 hover:text-white"
+                                onClick={() => { setSelected(options[(options.indexOf(selected) + 1) % 3]) }}
+                            >
+                                Next
+                            </button>}
+                            {options.indexOf(selected) === 2 && <button
+                                className="text-xl w-[28rem] border-2 rounded-md p-1 text-center border-blue-500 text-white bg-green-500 hover:text-white"
+                                onClick={() => { handleSubmit() }}
+                            >
+                                Get Footprints
+                            </button>}
+                        </div>
+                    </div>
 
-                <div className='w-full flex justify-center mt-3 mb-14'>
-                    {options.indexOf(selected) < 2 && <button
-                        className="text-xl w-[28rem] border-2 rounded-md p-1 text-center border-blue-500 text-white bg-green-500 hover:text-white"
-                        onClick={() => { setSelected(options[(options.indexOf(selected) + 1) % 3]) }}
-                    >
-                        Next
-                    </button>}
-                    {options.indexOf(selected) === 2 && <button
-                        className="text-xl w-[28rem] border-2 rounded-md p-1 text-center border-blue-500 text-white bg-green-500 hover:text-white"
-                        onClick={handleSubmit}
-                    >
-                        Get Footprints
-                    </button>}
+                    <div className='flex justify-center w-full mt-10 col-span-2'>
+                        <MoreInfo/>
+                    </div>
                 </div>
             </div>
         </>
