@@ -4,5 +4,7 @@ const userInputController = require('../Controller/userInputController')
 
 const router = express.Router()
 
+router.route('/get-user-input').post(userInputController.getUserData)
 router.route('/carbon-footprint-advisor').get(llmController.getAnswer)
-router.route('/get-user-input').post(userInputController)
+
+module.exports = router

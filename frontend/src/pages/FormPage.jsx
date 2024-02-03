@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import Household from '../components/FormPage/Household';
 import Transport from '../components/FormPage/Transport';
 import Lifestyle from '../components/FormPage/Lifestyle';
 import Navbar from '../components/Navbar/Navbar';
+
 import MoreInfo from '../components/FormPage/MoreInfo';
+
 
 const FormPage = () => {
     const options = ["Household", "Transport", "Lifestyle"];
@@ -48,9 +52,23 @@ const FormPage = () => {
         }
     });
 
-    const handleSubmit = () => {
-        console.log(household, lifestyleData, transportData);
-    }
+    const handleSubmit = async (e) =>{
+        const inputData = {household, lifestyleData, transportData};
+        e.preventDefault();
+
+        try{
+            const response = await axios.post('http://localhost:3000/get-user-input', inputData);
+
+            if(response.status == 200){
+                console.log("data submitted successfully.");
+            }
+            else{
+                console.error("submission failed", response.statusText); 
+            }
+        }catch(err){
+            console.log("Error", err);
+        }
+
 
     return (
         <>

@@ -1,5 +1,7 @@
+
 import { IoFastFood } from "react-icons/io5";
 import { FaRecycle } from "react-icons/fa";
+
 
 const Lifestyle = ({lifestyleData,setLifestyleData}) => {
 
@@ -21,7 +23,10 @@ const Lifestyle = ({lifestyleData,setLifestyleData}) => {
 
     return (
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+
+
             <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><IoFastFood className="text-xl"/>ABOUT YOUR LIFESTYLE</h2>
+
             <div className="mb-4">
                 <label htmlFor="preferredDiet">Your household preferred diet is</label>
                 <select id="preferredDiet" name="preferredDiet" value={lifestyleData.preferredDiet} onChange={handleChange} className="w-full px-4 py-2 border rounded-md">
@@ -51,7 +56,9 @@ const Lifestyle = ({lifestyleData,setLifestyleData}) => {
                 <label htmlFor="eatOutFrequency">How many times a week does your family eat out?</label>
                 <input type="number" id="eatOutFrequency" name="eatOutFrequency" value={lifestyleData.eatOutFrequency} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
             </div>
+
                 <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaRecycle className="text-xl"/>CHECK ITEMS YOU RECYCLE</h2>
+
             <div className="mb-4 grid grid-cols-3">
                 <label className="flex items-center mb-2">
                     <input type="checkbox" name="food" checked={lifestyleData.wasteHandling.food} onChange={handleCheckboxChange} className="mr-2" />

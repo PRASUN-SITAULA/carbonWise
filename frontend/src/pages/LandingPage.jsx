@@ -10,6 +10,7 @@ const LandingPage = () => {
             {/* backgroundImage: `url(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center'  */}
             <div className="header flex justify-center">
                 <header className='w-full md:w-[80%] h-14 flex justify-between text-white mt-20 items-center mx-5'>
+
                     <Link to='/'><div className="text-3xl">
                         Carbon Footprint Advisor
                     </div>
@@ -28,7 +29,9 @@ const LandingPage = () => {
             </div>
             <div className="w-full flex justify-center items-center">
 
+
                 <div className="main grid place-items-center grid-cols-1 md:grid-cols-3 w-[80%] mt-14">
+
                     <div>
                         {/* <h5 className="text-5xl bold text-white font-bold">
                             Daily Diary  <span className='font-thin'>&</span>

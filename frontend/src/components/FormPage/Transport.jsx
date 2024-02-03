@@ -1,5 +1,7 @@
+
 import { FaCar } from "react-icons/fa";
 import { FaPlane } from "react-icons/fa";
+
 
 const Transport = ({transportData,setTransportData}) => {
 
@@ -24,6 +26,7 @@ const Transport = ({transportData,setTransportData}) => {
     return (
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
             <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaCar className="text-xl"/>HOW DO YOU GET AROUND?</h2>
+
             <h3 className="text-lg mb-4">Average hours per week traveled by all household members using:</h3>
             <div className="grid grid-cols-2 gap-4 mb-4">
             {getArounds.map((getAround, index) => (
@@ -63,14 +66,17 @@ const Transport = ({transportData,setTransportData}) => {
                 {transportData.useMotorbike === 'Yes' && (
                     <>
                         <label htmlFor="motorbikeMileage">Annual mileage (km)</label>
+
                         <input type="number" id="motorbikeMileage" name="motorbikeMileage" value={transportData.motorbikeMileage} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
                         <label htmlFor="motorbikeConsumption">Average consumption (l/100 km)</label>
                         <input type="number" id="motorbikeConsumption" name="motorbikeConsumption" value={transportData.motorbikeConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+
                     </>
                 )}
             </div>
             
             <div className="mb-4">
+
                 <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaPlane className="text-3xl"/>PRIVATE FLIGHTS PER YEAR FOR ALL HOUSEHOLD MEMBERS:</h2>
                 {/* <label htmlFor="veryLongRange">Very long range round-trip flights ({'>'}12000 km or {'>'}14 hours one way) per year</label>
                 <input type="number" id="veryLongRange" name="veryLongRange" value={transportData.privateFlights.veryLongRange} onChange={handlePrivateFlightsChange} className="w-full px-4 py-2 border rounded-md mb-2" /> */}
