@@ -50,11 +50,10 @@ const FormPage = () => {
 
     const handleSubmit = async (e) =>{
         const inputData = {household, lifestyleData, transportData};
-        console.log(household,lifestyleData,transportData);
         e.preventDefault();
 
         try{
-            const response = await axios.post('/get-user-input', inputData);
+            const response = await axios.post('http://localhost:3000/get-user-input', inputData);
 
             if(response.status == 200){
                 console.log("data submitted successfully.");
@@ -64,7 +63,6 @@ const FormPage = () => {
             }
         }catch(err){
             console.log("Error", err);
-
         }
     }
 
@@ -100,7 +98,7 @@ const FormPage = () => {
                     </button>}
                     {options.indexOf(selected) === 2 && <button
                         className="text-xl w-[28rem] border-2 rounded-md p-1 text-center border-blue-500 text-white bg-green-500 hover:text-white"
-                        onClick={() => { handleSubmit() }}
+                        onClick={handleSubmit}
                     >
                         Get Footprints
                     </button>}

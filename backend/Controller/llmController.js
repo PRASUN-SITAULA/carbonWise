@@ -3,9 +3,13 @@ const { ChatOpenAI } = require('@langchain/openai')
 const { ChatPromptTemplate } = require('@langchain/core/prompts')
 const { StringOutputParser } = require('@langchain/core/output_parsers')
 
-dotenv.config({path:'../../config.env'})
+dotenv.config()
 
-const model = new ChatOpenAI({openAIApiKey: process.env.OPENAI_API_KEY})
+const apiKey = process.env.OPENAI_API_KEY
+
+const model =  new ChatOpenAI({
+    openAIApiKey: apiKey,
+  });
 const outputParser = new StringOutputParser()
 
 const prompt = ChatPromptTemplate.fromMessages([
@@ -14,6 +18,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 ])
 
 const chain = prompt.pipe(model).pipe(outputParser)
+
 const getAnswer = async () => 
 {
     const answer = await chain.invoke({
