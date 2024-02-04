@@ -71,8 +71,8 @@ exports.getAnswer = async (req, res) =>
         totalWasteCarbonEmission,
         transporationCarbonEmission
     })
-    console.log(userData)
-    console.log(totalCarbonFootprint)
+    // console.log(userData)
+    // console.log(totalCarbonFootprint)
 }
 
 const calculateCarbonFootprint = (userData) =>{
