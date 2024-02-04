@@ -12,7 +12,7 @@ const LandingPage = () => {
                 <header className='w-full md:w-[80%] h-14 flex justify-between text-white mt-20 items-center mx-5'>
 
                     <Link to='/'><div className="text-3xl">
-                        Carbon Footprint Advisor
+                        CarbonWise
                     </div>
                     </Link>
                     <div>

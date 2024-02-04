@@ -7,11 +7,16 @@ import Lifestyle from '../components/FormPage/Lifestyle';
 import Navbar from '../components/Navbar/Navbar';
 
 import MoreInfo from '../components/FormPage/MoreInfo';
-
+import { useDashboard } from '../utils/DashboardDataProvider';
+import { useNavigate } from "react-router-dom";
 
 const FormPage = () => {
+    const navigate = useNavigate();
     const options = ["Household", "Transport", "Lifestyle"];
     const [selected, setSelected] = useState(options[0]);
+
+    const dashboard = useDashboard();
+
 
     const [household, setHousehold] = useState({
         numberOfPeople: 4,
@@ -49,23 +54,46 @@ const FormPage = () => {
         }
     });
 
-    const handleSubmit = async (e) =>{
-        const inputData = {household, lifestyleData, transportData};
+    const handleSubmit = async (e) => {
+        const inputData = { household, lifestyleData, transportData };
         e.preventDefault();
+        console.log("handle submit ")
 
-        try{
+        try {
             const response = await axios.post('http://localhost:3000/get-user-input', inputData);
 
-            if(response.status == 200){
+            if (response.status == 200) {
                 console.log("data submitted successfully.");
             }
-            else{
-                console.error("submission failed", response.statusText); 
+            else {
+                console.error("submission failed", response.statusText);
             }
-        }catch(err){
+        } catch (err) {
             console.log("Error", err);
         }
+
+        await dashboard.fetchData();
+        navigate('/dashboard');
     }
+
+
+    // const fetchData = async () => {
+    //     console.log("Trying to fetch data");
+    //     try {
+    //         const response = await axios.get('http://localhost:3000/carbon-footprint-advisor');
+
+    //         if (response.status === 200) {
+    //             console.log(response);
+    //             dashboard.setDashboardData(response.data.electricityCarbonEmission,response.data.transporationCarbonEmission,response.data.totalWasteCarbonEmission)
+
+    //         } else {
+    //             console.error("fetch failed", response.statusText);
+    //         }
+    //     } catch (err) {
+    //         console.log("Error", err);
+    //     }
+    // };
+
 
     return (
         <>
@@ -108,7 +136,7 @@ const FormPage = () => {
                     </div>
 
                     <div className='flex justify-center w-full mt-10 col-span-2'>
-                        <MoreInfo/>
+                        <MoreInfo />
                     </div>
                 </div>
             </div>
