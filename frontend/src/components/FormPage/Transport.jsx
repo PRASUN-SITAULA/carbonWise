@@ -65,7 +65,7 @@ const Transport = ({transportData,setTransportData}) => {
                 </select>
                 {transportData.useMotorbike === 'Yes' && (
                     <>
-                        <label htmlFor="motorbikeDistanceTraveled">Annual mileage (km)</label>
+                        <label htmlFor="motorbikeDistanceTraveled">Total distance traveled (km)</label>
 
                         <input type="number" min="0" id="motorbikeDistanceTraveled" name="motorbikeDistanceTraveled" value={transportData.motorbikeDistanceTraveled} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
                         {/* <label htmlFor="motorbikeConsumption">Average consumption (l/100 km)</label>
