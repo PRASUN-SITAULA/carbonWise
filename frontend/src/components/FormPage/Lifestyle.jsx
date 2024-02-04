@@ -55,7 +55,7 @@ const Lifestyle = ({lifestyleData,setLifestyleData}) => {
             </div>
             <div className="mb-4">
                 <label htmlFor="eatOutFrequency">How many times a week does your family eat out?</label>
-                <input type="number" id="eatOutFrequency" name="eatOutFrequency" value={lifestyleData.eatOutFrequency} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                <input type="number" min="0" id="eatOutFrequency" name="eatOutFrequency" value={lifestyleData.eatOutFrequency} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
             </div>
 
                 <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaRecycle className="text-xl"/>CHECK ITEMS YOU RECYCLE</h2>
