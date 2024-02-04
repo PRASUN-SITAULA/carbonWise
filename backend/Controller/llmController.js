@@ -68,3 +68,50 @@ exports.getAnswer = async (req, res) =>
     })
     console.log(userData)
 }
+
+const calculateCarbonFootprint = (userData) =>{
+    const { household, lifestyle, transportation } = userData
+
+    // Emission factors for electricity and vehicles
+    const electricityEmissionFactor = 0.332
+    const bikeEmissionFactorPerPerson = 0.114
+    const carEmissionFactorPerPerson = 0.17
+    const trainEmissionFactorPerPerson = 0.034
+    const tramEmissionFactorPerPerson = 0.029
+    const busEmissionFactorPerPerson = 0.097
+    const shortRangeFlightEmissionFactorPerPerson = 0.151
+    const longRangeFlightEmissionFactorPerPerson = 0.148
+
+    const wasteCarbonEmissionPerPerson = 315
+
+    const electricityCarbonEmission = Number(household.electricityConsumption) * electricityEmissionFactor - (Number(household.cleanEnergyPercentage)/100 * Number(household.electricityConsumption))
+
+    let totalWasteCarbonEmission = wasteCarbonEmissionPerPerson * Number(household.numberOfPeople)
+    
+    if(lifestyle.wasteHandling["glass"]){
+        totalWasteCarbonEmission -= 11 * Number(household.numberOfPeople)
+    }
+    else if(lifestyle.wasteHandling["paper"]){
+        totalWasteCarbonEmission -= 51 * Number(household.numberOfPeople)
+    }
+    else if(lifestyle.wasteHandling["plastic"]){
+        totalWasteCarbonEmission -= 16 * Number(household.numberOfPeople)
+    }
+    else if(lifestyle.wasteHandling["food"]){
+        totalWasteCarbonEmission -= 10 * Number(household.numberOfPeople)
+    }
+    else if(lifestyle.wasteHandling["tinCans"]){
+        totalWasteCarbonEmission -= 40 * Number(household.numberOfPeople)
+    }
+    else{
+        totalWasteCarbonEmission += 0
+    }
+
+    const flightCarbonEmission = transportation.privateFlights["longRange"] * longRangeFlightEmissionFactorPerPerson + transportation.privateFlights["shortRange"] * shortRangeFlightEmissionFactorPerPerson
+    let transporationCarbonEmission = transportation.Train * trainEmissionFactorPerPerson + transportation.Bus * busEmissionFactorPerPerson + transportation.Tram * tramEmissionFactorPerPerson + flightCarbonEmission
+    
+    // if(transportation.useCar){
+    //     transporationCarbonEmission = 
+    // }
+
+}
