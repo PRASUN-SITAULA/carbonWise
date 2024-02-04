@@ -38,7 +38,7 @@ exports.getAnswer = async (req, res) =>
     The answer to Do you buy from environmentally responsible companies? is ${lifestyleData.buyFromEnvironmentallyResponsible}. The family eats out ${lifestyleData.eatOutFrequency} times a week. 
     The individual recyles ${recyclableMaterialsStr}.`
 
-    // const transportationStr = `The family travel in train, subway, intercitybus, citybus and sometimes even with walking. The average hours travelled in respective vehicles are ${transportData.intercityTrain}, 
+    // const transportationStr = `The family may travel in train, bus or tram. The average hours travelled in respective vehicles are ${transportData.intercityTrain}, 
     // ${transportData.subway}, ${transportData.intercityBus}, ${transportData.cityBus}, ${transportData.tram} and ${transportData.bikewalk}. `
     
         // Filter out empty/unused modes of transport
@@ -62,18 +62,24 @@ exports.getAnswer = async (req, res) =>
         ${transportationStr}
         `
     })
+    const [electricityCarbonEmission, totalWasteCarbonEmission, transporationCarbonEmission] = calculateCarbonFootprint(userData)
+    const totalCarbonFootprint = electricityCarbonEmission + totalWasteCarbonEmission + transporationCarbonEmission
     res.status(200).json({
         status: "success",
-        data: answer
+        data: answer,
+        electricityCarbonEmission,
+        totalWasteCarbonEmission,
+        transporationCarbonEmission
     })
     console.log(userData)
+    console.log(totalCarbonFootprint)
 }
 
 const calculateCarbonFootprint = (userData) =>{
-    const { household, lifestyle, transportation } = userData
+    const {  household, lifestyleData, transportData } = userData
 
     // Emission factors for electricity and vehicles
-    const electricityEmissionFactor = 0.332
+    const electricityEmissionFactor = 0.083 //per week
     const bikeEmissionFactorPerPerson = 0.114
     const carEmissionFactorPerPerson = 0.17
     const trainEmissionFactorPerPerson = 0.034
@@ -84,34 +90,40 @@ const calculateCarbonFootprint = (userData) =>{
 
     const wasteCarbonEmissionPerPerson = 315
 
-    const electricityCarbonEmission = Number(household.electricityConsumption) * electricityEmissionFactor - (Number(household.cleanEnergyPercentage)/100 * Number(household.electricityConsumption))
+    const tempElectricEmission = Number(household.electricityConsumption) * electricityEmissionFactor
+    const electricityCarbonEmission =  tempElectricEmission - (Number(household.cleanEnergyPercentage)/100 * tempElectricEmission)
 
     let totalWasteCarbonEmission = wasteCarbonEmissionPerPerson * Number(household.numberOfPeople)
     
-    if(lifestyle.wasteHandling["glass"]){
-        totalWasteCarbonEmission -= 11 * Number(household.numberOfPeople)
-    }
-    else if(lifestyle.wasteHandling["paper"]){
-        totalWasteCarbonEmission -= 51 * Number(household.numberOfPeople)
-    }
-    else if(lifestyle.wasteHandling["plastic"]){
-        totalWasteCarbonEmission -= 16 * Number(household.numberOfPeople)
-    }
-    else if(lifestyle.wasteHandling["food"]){
+    if(lifestyleData.wasteHandling["food"]){
         totalWasteCarbonEmission -= 10 * Number(household.numberOfPeople)
     }
-    else if(lifestyle.wasteHandling["tinCans"]){
+    if(lifestyleData.wasteHandling["paper"]){
+        totalWasteCarbonEmission -= 51 * Number(household.numberOfPeople)
+    }
+    
+    if(lifestyleData.wasteHandling["tinCans"]){
         totalWasteCarbonEmission -= 40 * Number(household.numberOfPeople)
     }
-    else{
-        totalWasteCarbonEmission += 0
+    if(lifestyleData.wasteHandling["plastic"]){
+        totalWasteCarbonEmission -= 16 * Number(household.numberOfPeople)
+    }
+    if(lifestyleData.wasteHandling["glass"]){
+        totalWasteCarbonEmission -= 11 * Number(household.numberOfPeople)
+    }
+   
+    const flightCarbonEmission = Number(transportData.privateFlights["longRange"]) * longRangeFlightEmissionFactorPerPerson + Number(transportData.privateFlights["shortRange"]) * shortRangeFlightEmissionFactorPerPerson
+    
+    let transporationCarbonEmission = Number(transportData.Train) * trainEmissionFactorPerPerson + Number(transportData.Bus) * busEmissionFactorPerPerson + Number(transportData.Tram) * tramEmissionFactorPerPerson
+    
+    if(transportData.useCar = 'Yes'){
+        transporationCarbonEmission += Number(transportData.carDistanceTraveled) * carEmissionFactorPerPerson
+    }
+    if(transportData.useMotorbike = 'Yes'){
+        transporationCarbonEmission += Number(transportData.motorbikeDistanceTraveled) * bikeEmissionFactorPerPerson
     }
 
-    const flightCarbonEmission = transportation.privateFlights["longRange"] * longRangeFlightEmissionFactorPerPerson + transportation.privateFlights["shortRange"] * shortRangeFlightEmissionFactorPerPerson
-    let transporationCarbonEmission = transportation.Train * trainEmissionFactorPerPerson + transportation.Bus * busEmissionFactorPerPerson + transportation.Tram * tramEmissionFactorPerPerson + flightCarbonEmission
-    
-    // if(transportation.useCar){
-    //     transporationCarbonEmission = 
-    // }
+    transporationCarbonEmission += flightCarbonEmission
 
+    return [electricityCarbonEmission, totalWasteCarbonEmission, transporationCarbonEmission]
 }
