@@ -5,8 +5,8 @@ import { FaPlane } from "react-icons/fa";
 
 const Transport = ({transportData,setTransportData}) => {
 
-    const getArounds = ["intercityTrain", "subway", "intercityBus", "cityBus", "tram", "bikeWalk"]
-    const getAroundsShow = ["Intercity Train", "Subway", "Intercity Bus", "City Bus", "Tram", "Bike/Walk"]
+    const getArounds = ["Train", "Bus", "Tram"]
+    const getAroundsShow = ["Train", "Bus", "Tram"]
     const handleChange = (e) => {
         const { name, value } = e.target;
         setTransportData({ ...transportData, [name]: value });
@@ -27,7 +27,7 @@ const Transport = ({transportData,setTransportData}) => {
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
             <h2 className="text-lg font-semibold mb-4 flex flex-row gap-5 items-center"><FaCar className="text-xl"/>HOW DO YOU GET AROUND?</h2>
 
-            <h3 className="text-lg mb-4">Average hours per week traveled by all household members using:</h3>
+            <h3 className="text-lg mb-4">Average distance per week traveled by all household members using:</h3>
             <div className="grid grid-cols-2 gap-4 mb-4">
             {getArounds.map((getAround, index) => (
                 <div className='flex justify-between items-center' key={index}>

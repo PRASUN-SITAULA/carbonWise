@@ -34,12 +34,9 @@ const FormPage = () => {
         }
     });
     const [transportData, setTransportData] = useState({
-        intercityTrain: 0,
-        subway: 0,
-        intercityBus: 0,
-        cityBus: 0,
-        tram: 0,
-        bikeWalk: 0,
+        Train: 0,
+        Bus: 0,
+        Tram: 0,
         useCar: '',
         carMileage: '',
         carConsumption: '',

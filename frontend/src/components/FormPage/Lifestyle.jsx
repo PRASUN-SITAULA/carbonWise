@@ -31,6 +31,7 @@ const Lifestyle = ({lifestyleData,setLifestyleData}) => {
                 <label htmlFor="preferredDiet">Your household preferred diet is</label>
                 <select id="preferredDiet" name="preferredDiet" value={lifestyleData.preferredDiet} onChange={handleChange} className="w-full px-4 py-2 border rounded-md">
                     <option value="Meat in most meals">Meat in most meals</option>
+                    <option value="Meat in some meals">Meat in some meals</option>
                     <option value="Vegetarian">Vegetarian</option>
                     <option value="Vegan">Vegan</option>
                     <option value="Other">Other</option>
