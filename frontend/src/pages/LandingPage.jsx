@@ -18,7 +18,7 @@ const LandingPage = () => {
                     <div>
                         <ul className='flex flex-row justify-center gap-10 place-items-center'>
                             <Link to='/home'><li className='items-center'>HOME</li></Link>
-                            <li className='items-center'>DASHBOARD</li>
+                            <Link to='/dashboard'><li className='items-center'>DASHBOARD</li></Link>
                         </ul>
                     </div>
                     <div>
