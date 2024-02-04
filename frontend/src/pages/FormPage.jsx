@@ -38,11 +38,11 @@ const FormPage = () => {
         Bus: 0,
         Tram: 0,
         useCar: '',
-        carMileage: '',
-        carConsumption: '',
+        carDistanceTraveled: '',
+        // carConsumption: '',
         useMotorbike: '',
-        motorbikeMileage: '',
-        motorbikeConsumption: '',
+        motorbikeDistanceTraveled: '',
+        // motorbikeConsumption: '',
         privateFlights: {
             longRange: 0,
             shortRange: 0

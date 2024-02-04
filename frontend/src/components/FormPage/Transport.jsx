@@ -48,10 +48,10 @@ const Transport = ({transportData,setTransportData}) => {
                 </select>
                 {transportData.useCar === 'Yes' && (
                     <>
-                        <label htmlFor="carMileage">Annual mileage (km)</label>
-                        <input type="number" min="0" id="carMileage" name="carMileage" value={transportData.carMileage} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
-                        <label htmlFor="carConsumption">Average consumption (l/100 km)</label>
-                        <input type="number" min="0" id="carConsumption" name="carConsumption" value={transportData.carConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                        <label htmlFor="carDistanceTraveled">Total distance traveled (km)</label>
+                        <input type="number" min="0" id="carDistanceTraveled" name="carDistanceTraveled" value={transportData.carDistanceTraveled} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
+                        {/* <label htmlFor="carConsumption">Average consumption (l/100 km)</label>
+                        <input type="number" min="0" id="carConsumption" name="carConsumption" value={transportData.carConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" /> */}
                     </>
                 )}
             </div>
@@ -65,11 +65,11 @@ const Transport = ({transportData,setTransportData}) => {
                 </select>
                 {transportData.useMotorbike === 'Yes' && (
                     <>
-                        <label htmlFor="motorbikeMileage">Annual mileage (km)</label>
+                        <label htmlFor="motorbikeDistanceTraveled">Annual mileage (km)</label>
 
-                        <input type="number" min="0" id="motorbikeMileage" name="motorbikeMileage" value={transportData.motorbikeMileage} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
-                        <label htmlFor="motorbikeConsumption">Average consumption (l/100 km)</label>
-                        <input type="number" min="0" id="motorbikeConsumption" name="motorbikeConsumption" value={transportData.motorbikeConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" />
+                        <input type="number" min="0" id="motorbikeDistanceTraveled" name="motorbikeDistanceTraveled" value={transportData.motorbikeDistanceTraveled} onChange={handleChange} className="w-full px-4 py-2 border rounded-md mb-2" />
+                        {/* <label htmlFor="motorbikeConsumption">Average consumption (l/100 km)</label>
+                        <input type="number" min="0" id="motorbikeConsumption" name="motorbikeConsumption" value={transportData.motorbikeConsumption} onChange={handleChange} className="w-full px-4 py-2 border rounded-md" /> */}
 
                     </>
                 )}
