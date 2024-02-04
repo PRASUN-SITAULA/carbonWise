@@ -38,7 +38,7 @@ const FormPage = () => {
         Bus: 0,
         Tram: 0,
         useCar: '',
-        carMileage: '',
+        distanceTraveled: '',
         carConsumption: '',
         useMotorbike: '',
         motorbikeMileage: '',
