@@ -18,7 +18,6 @@ Climate change and global warming are the defining challenges of our time. The p
 ![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
 
 
-
 ## Table of Contents
 
 - [Features](#features)
