@@ -72,7 +72,7 @@ const FormPage = () => {
             console.log("Error", err);
         }
 
-        await dashboard.fetchData();
+        dashboard.fetchData();
         navigate('/dashboard');
     }
 

@@ -18,12 +18,12 @@ const DashboardPage = () => {
         datasets: [
             {
                 data: [dashboard.household, dashboard.transportation, dashboard.lifestyle],
-                backgroundColor: ["#4CAF50", "#2196F3", "#0a417a"], // Updated colors
-                label: '' // Added label for dataset
+                backgroundColor: ["#4CAF50", "#2196F3", "#0a417a"],
+                label: ''
             },
         ],
     };
-    
+
     const barData = {
         labels: ["Household", "Transportation", "Lifestyle"],
         datasets: [
@@ -35,7 +35,7 @@ const DashboardPage = () => {
             },
         ],
     };
-    
+
     const barOptions = {
         maintainAspectRatio: false,
         scales: {
@@ -49,7 +49,7 @@ const DashboardPage = () => {
         },
         plugins: {
             legend: {
-                display: false, 
+                display: false,
             },
         },
     };
@@ -64,59 +64,65 @@ const DashboardPage = () => {
     };
 
     useEffect(() => {
-        // sales.datasets[0].data[0]=dashboard.household
-        // sales.datasets[0].data[1]=dashboard.transportation
-        // sales.datasets[0].data[2]=dashboard.lifestyle
-    },[])
+    }, [])
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         console.log("Trying to fetch data");
-    //         try {
-    //             const response = await axios.get('http://localhost:3000/carbon-footprint-advisor');
-    
-    //             if (response.status === 200) {
-    //                 console.log(response);
-    //                 sales.datasets[0].data[0]=response.data.electricityCarbonEmission
-    //                 sales.datasets[0].data[1]=response.data.transporationCarbonEmission
-    //                 sales.datasets[0].data[2]=response.data.totalWasteCarbonEmission
-
-    //                 console.log("Data = ",sales)
-    //             } else {
-    //                 console.error("fetch failed", response.statusText);
-    //             }
-    //         } catch (err) {
-    //             console.log("Error", err);
-    //         }
-    //     };
-    
-    //     fetchData();
-    
-    // }, []);
 
 
 
     return (
         <div>
-            <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
-                <Navbar />
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 p-14 md:px-32 gap-10 '>
-                <div className='h-[25rem] w-[25rem] flex justify-center items-center'>
-                    <Pie data={sales} options={options} className='h-[20rem] w-[20rem]'></Pie>
-                </div>
-                <div className='h-[25rem] flex justify-center items-center'>
-                    <Bar data={barData} options={barOptions}></Bar>
-                </div>
-            </div>
 
-            <div className='flex justify-center mt-5 flex-col w-full items-center'>
-                <h2 className='text-3xl font-bold text-green-700'>Steps you should follow to reduce your carbon footprint.</h2>
-                <div className='my-5 px-10 md:px-20'>
-                    <p>{dashboard.suggestions}</p>
-                    {typeof(dashboard.suggestions)}
-                </div>
-            </div>
+            {
+                (dashboard.household != null && dashboard.transportation != null) ?
+                    <>
+                        <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
+                            <Navbar />
+                        </div>
+                        <div className="text-center">
+                            <h1 className="text-3xl font-bold mb-2 mt-5">
+                                Your total carbon emission:
+                            </h1>
+                            <p className="text-2xl">
+                                {dashboard.household + dashboard.transportation + dashboard.lifestyle} <span className=' text-xl'>kgCO2e</span>
+                            </p>
+                        </div>
+
+                        <div className='w-full grid grid-cols-1 md:grid-cols-3 text-center'>
+                        </div>
+
+                        <div className='grid grid-cols-1 md:grid-cols-2 p-14 md:px-32 gap-10 '>
+                            <div className='h-[25rem] w-[25rem] flex justify-center items-center'>
+                                <Pie data={sales} options={options} className='h-[20rem] w-[20rem]'></Pie>
+                            </div>
+                            <div className='h-[25rem] flex justify-center items-center'>
+                                <Bar data={barData} options={barOptions}></Bar>
+                            </div>
+                        </div>
+                        <div className='flex flex-col items-center justify-center w-full bg-gray-50 pt-5 pb-20'>
+                            <h2 className='text-3xl font-bold text-green-700 mb-5'>Steps You Need To Follow To Reduce Your Carbon Footprint</h2>
+                            <div className='px-10 md:px-24'>
+                                {dashboard.suggestions.split('\n').map((line, index) => (
+                                    <p key={index} className='my-2'>{line}</p>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div className="h-screen w-full bg-black bg-opacity-50 ">
+
+                            <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
+                                <Navbar />
+                            </div>
+                            <div className="w-full h-[80%] flex justify-center items-center text-white flex-col">
+                                <h3 className='text-xl'>Loading ...</h3>
+                                <p>(Fill the data if you haven't filled it)</p>
+                            </div>
+                        </div>
+                    </>
+
+
+            }
         </div>
     )
 }
