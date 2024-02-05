@@ -64,6 +64,9 @@ const DashboardPage = () => {
     };
 
     useEffect(() => {
+        if(dashboard.household == null && dashboard.transportation == null){
+            dashboard.fetchData()
+        }
     }, [])
 
 
@@ -83,7 +86,7 @@ const DashboardPage = () => {
                                 Your total carbon emission:
                             </h1>
                             <p className="text-2xl">
-                                {dashboard.household + dashboard.transportation + dashboard.lifestyle} <span className=' text-xl'>kgCO2e</span>
+                                {(dashboard.household + dashboard.transportation + dashboard.lifestyle).toFixed(2)} <span className=' text-xl'>tonCO2e per year</span>
                             </p>
                         </div>
 
