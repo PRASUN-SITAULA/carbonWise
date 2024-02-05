@@ -10,7 +10,6 @@ exports.getUserData = async (req, res, next) =>{
         // req.userData = {household, lifestyleData, transportData}
         res.status(200).json({
             status: "success",
-            data:household
         })
     }catch(err){
         res.status(400).json({
