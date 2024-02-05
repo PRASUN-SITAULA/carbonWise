@@ -8,7 +8,7 @@ const Navbar = () => {
     const dashboard = useDashboard();
 
     const handleDashboard = () =>{
-        dashboard.fetchData();
+        // dashboard.fetchData();
         navigate('/dashboard');
     }
     return (
