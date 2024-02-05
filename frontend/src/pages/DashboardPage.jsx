@@ -115,9 +115,13 @@ const DashboardPage = () => {
                                 <Navbar />
                             </div>
                             <div className="w-full h-[80%] flex justify-center items-center text-white flex-col">
-                                <h3 className='text-xl'>Loading ...</h3>
-                                <p>(Fill the data if you haven't filled it)</p>
+                                <h3 className='text-3xl font-bold mb-4'>Loading...</h3>
+                                <p className="text-sm text-gray-300">(Please fill the data if you haven't filled it)</p>
+                                <div className="mt-8">
+                                    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-white"></div>
+                                </div>
                             </div>
+
                         </div>
                     </>
 
