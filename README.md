@@ -12,8 +12,9 @@
 
 ## Description
 Welcome to the CarbonWise, a LLM powered web app that calculates the carbon footprint of a family and gives advisory to reduce the carbon footprint.
+CarbonWise harnesses the formidable capabilities of OpenAI's Language Model (LLM) via the OpenAI API to empower individuals to make informed decisions for a greener future.
 
-Climate change and global warming are the defining challenges of our time. The primary cause of  these problems is carbon dioxide. Our app empowers people to take actions for reducing their carbon footprint.
+Climate change and global warming are the defining challenges of our time. The primary cause of  these problems is carbon dioxide. Our app facilitates people to take actions for reducing their carbon footprint.
 
 ![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
 
@@ -61,7 +62,7 @@ git clone https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor
 ```
 ### Go into the repository
 ```bash
-cd carbon-footprint-reduction-advisor
+cd carbonWise
 ```
 ### Install packages
 Navigate to the frontend and backend directory
@@ -92,6 +93,9 @@ Open your browser and navigate to http://localhost:5173.
 OPENAI_API_KEY=your-api-key-goes-here
 PORT=3000
 ```
+
+## Usage
+
 
 ## Credits
 
