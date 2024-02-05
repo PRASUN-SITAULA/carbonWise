@@ -86,7 +86,7 @@ const DashboardPage = () => {
                                 Your total carbon emission:
                             </h1>
                             <p className="text-2xl">
-                                {(dashboard.household + dashboard.transportation + dashboard.lifestyle).toFixed(2)} <span className=' text-xl'>tonCO2e per year</span>
+                                {(dashboard.household + dashboard.transportation + dashboard.lifestyle).toFixed(2)} <span className=' text-xl'>tCO2e per year</span>
                             </p>
                         </div>
 
