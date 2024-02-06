@@ -67,6 +67,10 @@ const DashboardPage = () => {
         if(dashboard.household == null && dashboard.transportation == null){
             dashboard.fetchData()
         }
+        else{
+            console.log("Household=",dashboard.household)
+            console.log("Household=",dashboard.transportation)
+        }
     }, [])
 
 
