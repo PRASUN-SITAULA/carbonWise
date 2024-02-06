@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import AuthPage from './pages/AuthPage'
 import FormPage from './pages/FormPage'
 import DashboardPage from "./pages/DashboardPage";
+import { DashboardPageProvider } from "./utils/DashboardDataProvider";
 
 function App() {
   return (
@@ -12,13 +13,15 @@ function App() {
     <HomePage/>
     <AuthPage/> */}
       {/* <FormPage/> */}
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/home" element={<FormPage/>} />
-          <Route exact path="/dashboard" element={<DashboardPage/>} />
-        </Routes>
-      </Router>
+      <DashboardPageProvider>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="/home" element={<FormPage />} />
+            <Route exact path="/dashboard" element={<DashboardPage />} />
+          </Routes>
+        </Router>
+      </DashboardPageProvider>
     </>
 
   )
