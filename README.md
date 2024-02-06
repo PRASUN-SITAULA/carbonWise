@@ -65,7 +65,7 @@ This project is built using the following technologies:
 
 ### Clone this repository
 ```bash
-git clone https://github.com/PRASUN-SITAULA/carbonWise
+git clone https://github.com/PRASUN-SITAULA/carbonWise.git
 ```
 ### Go into the repository
 ```bash
