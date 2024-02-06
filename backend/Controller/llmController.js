@@ -23,6 +23,15 @@ exports.getAnswer = async (req, res) =>
     const chain = prompt.pipe(model).pipe(outputParser)
 
     const userData = sharedData.getUserData()
+    if(sharedData.getUserData.household == null && sharedData.getUserData.lifestyleData==null && sharedData.getUserData.transportData==null){
+        res.status(400).json({
+            status: "Error",
+            data: '',
+            electricityCarbonEmission: 0,
+            totalWasteCarbonEmission: 0,
+            transporationCarbonEmission: 0
+        })
+    }
 
     const { household, lifestyleData, transportData } = userData
 
@@ -53,7 +62,6 @@ exports.getAnswer = async (req, res) =>
 
     // Join modes of transport with commas
     const transportationStr = usedTransport.join(", ");
-
 
     const answer = await chain.invoke({
         input: `Give ways to reduce carbon footprint based on following data of an individual's household, lifestyle and transportation: 
