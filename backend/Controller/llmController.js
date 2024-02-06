@@ -23,20 +23,20 @@ exports.getAnswer = async (req, res) =>
     const chain = prompt.pipe(model).pipe(outputParser)
 
     const userData = sharedData.getUserData()
-    if(sharedData.getUserData.household == null && sharedData.getUserData.lifestyleData==null && sharedData.getUserData.transportData==null){
-        res.status(400).json({
-            status: "Error",
+    if(userData.household === undefined && userData.lifestyleData === undefined && userData.transportData === undefined){
+        res.status(200).json({
+            status: "No Data",
             data: '',
             electricityCarbonEmission: 0,
             totalWasteCarbonEmission: 0,
             transporationCarbonEmission: 0
         })
     }
-
-    const { household, lifestyleData, transportData } = userData
+    else{
+        const { household, lifestyleData, transportData } = userData
 
     // household string to be given to LLM.
-    const householdStr = `The household consists of ${household.numberOfPeople} with housing type ${household.housingType}. The total electricity consumption in KWh in a month is ${household.electricityConsumption} 
+    const householdStr = `The household consists of ${household.numberOfPeople} with housing type ${household.housingType}. The total electricity consumption is in KWh in a month is ${household.electricityConsumption} 
     with clean energy percentage ${household.cleanEnergyPercentage} and heating source as ${household.heatingEnergySource}.`
     
     // take the object of the materials that the user recycles and convert it to string.
@@ -85,6 +85,9 @@ exports.getAnswer = async (req, res) =>
         totalWasteCarbonEmission,
         transporationCarbonEmission
     })
+    }
+
+    
     // console.log(userData)
     // console.log(totalCarbonFootprint)
 }
