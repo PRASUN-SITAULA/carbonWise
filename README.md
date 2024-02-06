@@ -14,7 +14,11 @@
 Welcome to the CarbonWise, a LLM powered web app that calculates the carbon footprint of a family and gives advisory to reduce the carbon footprint.
 CarbonWise harnesses the formidable capabilities of OpenAI's Language Model (LLM) via the OpenAI API to empower individuals to make informed decisions for a greener future.
 
-Climate change and global warming are the defining challenges of our time. The primary cause of  these problems is carbon dioxide. Our app facilitates people to take actions for reducing their carbon footprint.
+Climate change and global warming are the defining challenges of our time. The primary cause of  these problems is carbon dioxide. Our app facilitates people to take actions for reducing their carbon footprint by asking users about their daily activity data such as number of people in household, electricity consumption, heating source, distance travelled using various mediums and lifestyle. This data is then processed through OpenAI's Language Model to generate personalized recommendations aimed at reducing users' environmental impact.
+
+Through our web platform, we seek to increase individuals' awareness of their environmental actions and offer tailored suggestions to decrease the pollution emitted by their daily activities.
+
+
 
 ![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
 
@@ -35,7 +39,7 @@ Climate change and global warming are the defining challenges of our time. The p
 - Clean and easy to navigate User Interface.
 - Calculate Carbon Footprint impact: Accurate calculation of carbon footprint three aspects energy consumption, lifestyle choices and transportaion.
 - Personalized insights: Break down of footprint by category, highlighting areas with the most significant impact.
-- Actionable advice: Actionable steps to reduce carbon footprint effectively.
+- Actionable advice: Actionable steps to reduce carbon footprint effectively using generative ai based on provided data.
 
 
 ## Technologies
