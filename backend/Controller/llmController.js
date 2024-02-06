@@ -40,7 +40,7 @@ exports.getAnswer = async (req, res) =>
     The individual recyles ${recyclableMaterialsStr}.`
 
     // transportation string
-    const transportationStr = `The family may travel in train, bus or tram. The average distance travelled in respective vehicles are ${transportData.Train}
+    let transportationStr = `The family may travel in train, bus or tram. The average distance travelled in respective vehicles are ${transportData.Train}
     ${transportData.Bus}, ${transportData.Tram}.`
     
     if(transportData.useCar == 'Yes'){
@@ -93,7 +93,7 @@ const calculateCarbonFootprint = (userData) =>{
     const shortRangeFlightEmissionFactorPerPerson = 0.151
     const longRangeFlightEmissionFactorPerPerson = 0.148
 
-    const wasteCarbonEmissionPerPerson = 315
+    const wasteCarbonEmissionPerPerson = 6.04 //per week
 
     const tempElectricEmission = Number(household.electricityConsumption) * electricityEmissionFactor
     const electricityCarbonEmission =  tempElectricEmission - (Number(household.cleanEnergyPercentage)/100 * tempElectricEmission)
@@ -101,23 +101,27 @@ const calculateCarbonFootprint = (userData) =>{
     let totalWasteCarbonEmission = wasteCarbonEmissionPerPerson * Number(household.numberOfPeople)
     
     if(lifestyleData.wasteHandling["food"]){
-        totalWasteCarbonEmission -= 10 * Number(household.numberOfPeople)
+        totalWasteCarbonEmission -= 0.191 * Number(household.numberOfPeople)
     }
     if(lifestyleData.wasteHandling["paper"]){
-        totalWasteCarbonEmission -= 51 * Number(household.numberOfPeople)
+        totalWasteCarbonEmission -= 0.978 * Number(household.numberOfPeople)
+
     }
     
     if(lifestyleData.wasteHandling["tinCans"]){
-        totalWasteCarbonEmission -= 40 * Number(household.numberOfPeople)
+        totalWasteCarbonEmission -= 0.767 * Number(household.numberOfPeople)
+
     }
     if(lifestyleData.wasteHandling["plastic"]){
-        totalWasteCarbonEmission -= 16 * Number(household.numberOfPeople)
+        totalWasteCarbonEmission -= 0.306 * Number(household.numberOfPeople)
+
     }
     if(lifestyleData.wasteHandling["glass"]){
-        totalWasteCarbonEmission -= 11 * Number(household.numberOfPeople)
+        totalWasteCarbonEmission -= 0.211 * Number(household.numberOfPeople)
+
     }
    
-    const flightCarbonEmission = Number(transportData.privateFlights["longRange"]) * longRangeFlightEmissionFactorPerPerson + Number(transportData.privateFlights["shortRange"]) * shortRangeFlightEmissionFactorPerPerson
+    const flightCarbonEmission = (Number(transportData.privateFlights["longRange"]) * longRangeFlightEmissionFactorPerPerson + Number(transportData.privateFlights["shortRange"]) * shortRangeFlightEmissionFactorPerPerson)/52
     
     let transporationCarbonEmission = Number(transportData.Train) * trainEmissionFactorPerPerson + Number(transportData.Bus) * busEmissionFactorPerPerson + Number(transportData.Tram) * tramEmissionFactorPerPerson
     

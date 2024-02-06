@@ -23,7 +23,6 @@ Through our web platform, we seek to increase individuals' awareness of their en
 ![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
 
 
-
 ## Table of Contents
 
 - [Features](#features)

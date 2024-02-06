@@ -9,6 +9,7 @@ export const DashboardPageProvider = ({ children }) => {
   const [lifestyle, setLifestyle] = useState(null)
   const [suggestions, setSuggestions] = useState('')
 
+
   const setDashboardData = (suggestions, household, transportation, lifestyle) => {
     setHousehold(household * 52.1429 / 1000);
     setTransportation(transportation * 52.1429 / 1000);
