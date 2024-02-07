@@ -5,7 +5,8 @@
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  <img src="https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/106f3a07-d14a-4ee9-9e0c-c8cfbc635a79">
+
 </p>
 
 
@@ -13,7 +14,7 @@
 Welcome to the CarbonWise, a LLM powered web app that calculates the carbon footprint of a family and gives advisory to reduce the carbon footprint.
 CarbonWise harnesses the formidable capabilities of OpenAI's Language Model (LLM) via the OpenAI API to empower individuals to make informed decisions for a greener future.
 
-Climate change and global warming are the defining challenges of our time. The primary cause of  these problems is carbon dioxide. Our app facilitates people to take actions for reducing their carbon footprint by asking users about their daily activity data such as number of people in household, electricity consumption, heating source, distance travelled using various mediums and lifestyle. This data is then processed through OpenAI's Language Model to generate personalized recommendations aimed at reducing users' environmental impact.
+Our app facilitates people to take actions for reducing their carbon footprint by asking users about their daily activity data such as number of people in household, electricity consumption, heating source, distance travelled using various mediums and lifestyle. This data is then processed through OpenAI's Language Model to generate personalized recommendations aimed at reducing users' environmental impact and tackling climate change.
 
 Through our web platform, we seek to increase individuals' awareness of their environmental actions and offer tailored suggestions to decrease the pollution emitted by their daily activities.
 
