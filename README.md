@@ -19,12 +19,7 @@ Our app facilitates people to take actions for reducing their carbon footprint b
 Through our web platform, we seek to increase individuals' awareness of their environmental actions and offer tailored suggestions to decrease the pollution emitted by their daily activities.
 
 
-![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
-![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/b8210e87-5bc7-4f41-acff-03de03576152)
-![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/7e3834a9-e4fc-43d0-9325-ca310ab261c9)
-![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/997acf99-3454-413f-b099-038f9501d230)
-![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/327fd2cf-ad44-43f5-8c6f-e9438a92680b)
-![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/98448233-dda5-4723-9fb7-dc850267e37f)
+<video src="https://github.com/PRASUN-SITAULA/carbonWise/assets/109226874/b4fc2eea-f489-45e3-9c49-d2fbfa681274"></video>
 
 
 
@@ -103,7 +98,12 @@ PORT=3000
 ```
 
 ## Usage
-<video src="https://github.com/PRASUN-SITAULA/carbonWise/assets/109226874/b4fc2eea-f489-45e3-9c49-d2fbfa681274"></video>
+
+![Landing](https://github.com/PRASUN-SITAULA/carbon-footprint-reduction-advisor/assets/89672957/3a9eeeb8-ff76-45ff-953c-0674a298b6c6)
+![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/b8210e87-5bc7-4f41-acff-03de03576152)
+![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/327fd2cf-ad44-43f5-8c6f-e9438a92680b)
+![image](https://github.com/PRASUN-SITAULA/carbonWise/assets/89672957/98448233-dda5-4723-9fb7-dc850267e37f)
+
 
 ## Credits
 [Prasun Sitaula](https://github.com/PRASUN-SITAULA)
