@@ -5,8 +5,6 @@ import Household from '../components/FormPage/Household';
 import Transport from '../components/FormPage/Transport';
 import Lifestyle from '../components/FormPage/Lifestyle';
 import Navbar from '../components/Navbar/Navbar';
-
-import MoreInfo from '../components/FormPage/MoreInfo';
 import { useDashboard } from '../utils/DashboardDataProvider';
 import { useNavigate } from "react-router-dom";
 
@@ -85,10 +83,9 @@ const FormPage = () => {
                     <>
                         <div className="h-screen w-full bg-black bg-opacity-50 ">
 
-                            <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
-                                <Navbar />
-                            </div>
-                            <div className="w-full h-[80%] flex justify-center items-center text-white flex-col">
+                            <Navbar />
+
+                            <div className="w-full h-[80%] flex justify-center items-center text-white flex-col pt-24">
                                 <h3 className='text-3xl font-bold mb-4'>Loading...</h3>
                                 <p className="text-sm text-gray-300">(Please wait till we process your data.)</p>
                                 <div className="mt-8">
@@ -101,16 +98,15 @@ const FormPage = () => {
                     :
                     <>
                         <div className='bg-[#f0f5f9] pb-10'>
-                            <div className='bg-gradient-to-t from-cyan-700 to-purple-800'>
-                                <Navbar />
-                            </div>
-                            <div className='grid grid-cols-1 md:grid-cols-7 px-10'>
+
+                            <Navbar />
+                            <div className=' md:grid-cols-7 px-10 pt-24'>
                                 <div className='col-span-5'>
                                     <div className='grid md:w-1/2 grid-cols-1 gap-4 w-[20rem] md:grid-cols-3 md:gap-10 mx-auto my-10'>
                                         {options.map((option, index) => (
                                             <button
                                                 key={index}
-                                                className={`text-2xl border-2 rounded-md p-1 text-center border-blue-500 ${selected === option ? "bg-blue-500 text-white " : "hover:bg-gray-200"}`}
+                                                className={`text-2xl border-2 rounded-md p-1 text-center border-green-500 px-4 ${selected === option ? "bg-green-500 text-white " : "hover:bg-gray-200"}`}
                                                 onClick={() => { setSelected(option) }}
                                             >
                                                 {option}
@@ -138,9 +134,6 @@ const FormPage = () => {
                                     </div>
                                 </div>
 
-                                <div className='flex justify-center w-full mt-10 col-span-2'>
-                                    <MoreInfo />
-                                </div>
                             </div>
                         </div>
                     </>

@@ -1,67 +1,162 @@
-import React from 'react'
-import landing_image from '../images/footprint_analysis.png'
-import { Link } from 'react-router-dom'
-
-const LandingPage = () => {
+import { Leaf, BarChart3, Globe2, ArrowRight, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+function App() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     return (
-        // from-lime-800 via-lime-600 to-lime-300
-        <div className='h-screen w-full flex flex-col gap-14 relative bg-gradient-to-t from-cyan-400 to-purple-800'
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 0 100%)", }}>
-            {/* backgroundImage: `url(${background_image})`, backgroundSize: 'cover', backgroundPosition: 'center'  */}
-            <div className="header flex justify-center">
-                <header className='w-full md:w-[80%] h-14 flex justify-between text-white mt-20 items-center mx-5'>
-
-                    <Link to='/'><div className="text-3xl">
-                        CarbonWise
-                    </div>
-                    </Link>
+        <div className="min-h-screen bg-gradient-to-b from-green-50 to-teal-50">
+            {/* Header */}
+            <header className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b">
+            <div className="container mx-auto px-4 py-4">
+                <nav className="flex justify-between items-center">
                     <div>
-                        <ul className='flex flex-row justify-center gap-10 place-items-center'>
-                            <Link to='/home'><li className='items-center'>HOME</li></Link>
-                            <Link to='/dashboard'><li className='items-center'>DASHBOARD</li></Link>
-                        </ul>
+                        <Link to='/' className="flex items-center gap-2">
+                            <Leaf className="h-6 w-6 text-teal-600" />
+                            <span className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-green-600 text-transparent bg-clip-text">
+                            EcoTrack
+                            </span>
+                        </Link>
                     </div>
-                    <div>
-                        {/* <button className='bg-transparent rounded-xl w-20 h-8'>LOGIN</button> */}
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8">
+                        <a href="#features" className="text-gray-700 hover:text-teal-600 transition">
+                            Features
+                        </a>
+                        <Link to="/dashboard" className="text-gray-700 hover:text-teal-600 transition">
+                            Dashboard
+                        </Link>
+                        <Link
+                            to="/home"
+                            className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+                        >
+                            Get Started
+                        </Link>
                     </div>
-                </header>
 
-            </div>
-            <div className="w-full flex justify-center items-center">
+                    {/* Mobile Navigation */}
+                    <div className="md:hidden">
+                        <button onClick={toggleMenu} className="text-teal-600">
+                            {isMenuOpen ? (
+                                <X className="h-6 w-6" />
+                            ) : (
+                                <Menu className="h-6 w-6" />
+                            )}
+                        </button>
+                    </div>
+                </nav>
 
-
-                <div className="main grid place-items-center grid-cols-1 md:grid-cols-3 w-[80%] mt-14">
-
-                    <div>
-                        {/* <h5 className="text-5xl bold text-white font-bold">
-                            Daily Diary  <span className='font-thin'>&</span>
-
-                        </h5> */}
-
-                        <h5 className="text-5xl bold text-white font-bold">
-                            Carbon Footprint Analysis
-                        </h5>
-                        <div className='mt-5'>
-                            {/* <button className='bg-transparent rounded-xl border-white border-2 w-24 h-8 text-white mt-5 text-sm hover:bg-white hover:text-black'>SIGN UP {'>'}</button> */}
-                            <Link to='/home'><button className='bg-transparent rounded-xl border-white border-2 w-32 h-8 text-white mt-5 text-sm hover:bg-white hover:text-black mx-3'>GET STARTED {'>'}</button></Link>
+                {/* Mobile Menu */}
+                {isMenuOpen && (
+                    <div className="absolute top-16 left-0 w-full bg-white shadow-md p-4 md:hidden">
+                        <div className="flex flex-col items-center gap-4">
+                            <a
+                                href="#features"
+                                className="text-gray-700 hover:text-teal-600 transition"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Features
+                            </a>
+                            <Link
+                                to="/dashboard"
+                                className="text-gray-700 hover:text-teal-600 transition"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Dashboard
+                            </Link>
+                            <Link
+                                to="/home"
+                                className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Get Started
+                            </Link>
                         </div>
                     </div>
-                    <div className='text-white text-2xl'>
-                        {/* <h5 className='text-2xl font-bold'>Features</h5> */}
-                        <ul className="list-disc pl-4 space-y-3">
-                            <li className="mt-2">Generative AI</li>
-                            <li className="mt-2">Carbon Footprint Analysis</li>
-                            <li className="mt-2">Footprint Reduction Advisor</li>
-                        </ul>
-                    </div>
+                )}
+            </div>
+        </header>
 
-                    <div className="image ">
-                        <img src={landing_image} alt="" className='rounded-xl'/>
+            {/* Hero Section */}
+            <section className="pt-32 pb-16 px-4">
+                <div className="container mx-auto">
+                    <div className="flex flex-col md:flex-row items-center gap-12">
+                        {/* Text Section */}
+                        <div className="flex-1 space-y-8">
+                            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                                Transform Your
+                                <span className="block text-teal-600">Environmental Impact</span>
+                            </h1>
+                            <p className="text-xl text-gray-600 max-w-xl">
+                                Join thousands of conscious individuals and businesses in measuring, understanding,
+                                and reducing their carbon footprint with AI-powered insights.
+                            </p>
+                            <div className="flex gap-4">
+                                <Link
+                                    to="/home"
+                                    className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition flex items-center"
+                                >
+                                    Start Your Journey
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                                <a
+                                    href="#"
+                                    className="px-6 py-3 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-100 transition"
+                                >
+                                    Watch Demo
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Image Section */}
+                        <div className="flex-1">
+                            <img
+                                src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80"
+                                alt="Sustainable Future"
+                                className="rounded-2xl shadow-2xl w-full max-w-lg mx-auto transform hover:scale-105 transition-transform duration-300"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Features Section */}
+            <section id="features" className="py-16 px-4 bg-white/50">
+                <div className="container mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-12">Why Choose EcoTrack?</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                            <BarChart3 className="h-12 w-12 text-teal-600 mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">Real-time Analytics</h3>
+                            <p className="text-gray-600">
+                                Track your carbon footprint in real-time with detailed insights and actionable
+                                recommendations.
+                            </p>
+                        </div>
+                        <div className="p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                            <Globe2 className="h-12 w-12 text-teal-600 mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">Global Impact</h3>
+                            <p className="text-gray-600">
+                                Join a worldwide community committed to reducing environmental impact and creating
+                                sustainable change.
+                            </p>
+                        </div>
+                        <div className="p-6 rounded-lg border hover:shadow-lg transition-shadow">
+                            <Leaf className="h-12 w-12 text-teal-600 mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">Smart Solutions</h3>
+                            <p className="text-gray-600">
+                                Get personalized recommendations powered by AI to optimize your sustainability
+                                efforts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    )
+    );
 }
 
-export default LandingPage
+export default App;
