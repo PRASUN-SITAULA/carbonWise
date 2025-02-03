@@ -1,5 +1,5 @@
 
-<h3 align="center">EcoTrack</h3>
+<h3 align="center">CarbonWise</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
@@ -10,8 +10,8 @@
 
 
 ## Description
-Welcome to the EcoTrack, a LLM powered web app that calculates the carbon footprint of a family and gives advisory to reduce the carbon footprint.
-EcoTrack harnesses the formidable capabilities of OpenAI's Language Model (LLM) via the OpenAI API to empower individuals to make informed decisions for a greener future.
+Welcome to the CarbonWise, a LLM powered web app that calculates the carbon footprint of a family and gives advisory to reduce the carbon footprint.
+CarbonWise harnesses the formidable capabilities of OpenAI's Language Model (LLM) via the OpenAI API to empower individuals to make informed decisions for a greener future.
 
 Our app facilitates people to take actions for reducing their carbon footprint by asking users about their daily activity data such as number of people in household, electricity consumption, heating source, distance travelled using various mediums and lifestyle. This data is then processed through OpenAI's Language Model to generate personalized recommendations aimed at reducing users' environmental impact and tackling climate change.
 
@@ -50,11 +50,11 @@ This project is built using the following technologies:
 
 ### Clone this repository
 ```bash
-git clone 
+git clone https://github.com/PRASUN-SITAULA/carbonWise/
 ```
 ### Go into the repository
 ```bash
-cd EcoTrack
+cd CarbonWise
 ```
 ### Install packages
 Navigate to the frontend and backend directory
